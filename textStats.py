@@ -39,10 +39,18 @@ for word in words:
 	avgWord += len(word)
 print ("Average word length - " + str(avgWord/len(words)) + " characters")
 
+
 #Numbers of sentences
 sent_det = nltk.data.load('tokenizers/punkt/english.pickle')
+print(sent_det.text_contains_sentbreak(text))
 sentences = sent_det.tokenize(text.strip())
 print ("Sentences - " + str(len(sentences)))
+print(tokens[0:50])
+
+#Numbers of sentences 2
+sentences2 = sent_det.sentences_from_tokens(tokens)
+print ("Sentences2 - " + str(len(sentences2)))
+
 
 #Average length of sentences
 avgSent = 0
@@ -65,12 +73,13 @@ def extract_entity_names(t):
 
 #tagged = nltk.pos_tag(tokens)
 #entities = nltk.chunk.ne_chunk(tagged)
-tokenized_sentences = [nltk.word_tokenize(sentence) for sentence in sentences]
-tagged_sentences = [nltk.pos_tag(sentence) for sentence in tokenized_sentences]
-chunked_sentences = nltk.batch_ne_chunk(tagged_sentences, binary=True)
-entity_names = []
-for tree in chunked_sentences:
-	entity_names.extend(extract_entity_names(tree))
-print ("Unique Entities - " + str(len(set(entity_names))))
-print ("Total Entities - " + str(len(entity_names)))
-print (set(entity_names))
+# tokenized_sentences = [nltk.word_tokenize(sentence) for sentence in sentences]
+# tagged_sentences = [nltk.pos_tag(sentence) for sentence in tokenized_sentences]
+# chunked_sentences = nltk.batch_ne_chunk(tagged_sentences, binary=True)
+# entity_names = []
+# for tree in chunked_sentences:
+# 	entity_names.extend(extract_entity_names(tree))
+# print ("Unique Entities - " + str(len(set(entity_names))))
+# print ("Total Entities - " + str(len(entity_names)))
+# print (set(entity_names))
+
